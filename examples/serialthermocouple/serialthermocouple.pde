@@ -14,13 +14,13 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-#include "Adafruit_MAX31855.h"
+#include "MAX31855.h"
 
 int thermoDO = 3;
 int thermoCS = 4;
 int thermoCLK = 5;
 
-Adafruit_MAX31855 thermocouple(thermoCLK, thermoCS, thermoDO);
+MAX31855 thermocouple(thermoCLK, thermoCS, thermoDO);
   
 void setup() {
   Serial.begin(9600);
