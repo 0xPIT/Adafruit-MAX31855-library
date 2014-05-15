@@ -14,11 +14,11 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-#include "MAX31855.h"
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 #include <stdlib.h>
-#include <SPI.h>
+#include "SPI.h"
+#include "MAX31855.h"
 
 MAX31855::MAX31855(int8_t SCLK, int8_t CS, int8_t MISO) {
   hwSPI = false;
@@ -38,12 +38,10 @@ MAX31855::MAX31855(int8_t CS) {
   cs = CS;
 
   pinMode(cs, OUTPUT);
-
   SPI.begin();
   SPI.setBitOrder(MSBFIRST);
   SPI.setDataMode(SPI_MODE0);
   SPI.setClockDivider(SPI_CLOCK_DIV4);
-
   digitalWrite(cs, HIGH);
 }
 
@@ -96,7 +94,7 @@ uint32_t MAX31855::spiread32(void) {
   int i;
   uint32_t d = 0;
 
-  if (hSPI) {
+  if (hwSPI) {
     return hwspiread32();
   }
 

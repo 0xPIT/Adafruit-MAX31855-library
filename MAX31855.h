@@ -14,7 +14,6 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-
 #if (ARDUINO >= 100)
  #include "Arduino.h"
 #else
